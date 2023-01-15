@@ -16,4 +16,3 @@ function TaskCard({ task }) {
 }
 
 export default TaskCard;
-// buscar dropdiling, contexto
