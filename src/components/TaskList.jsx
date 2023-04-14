@@ -1,24 +1,22 @@
-import TaskCard from './TaskCard';
 import { useContext } from 'react';
-import { TaskContext } from './../context/TaskContext';
+import TaskCard from './TaskCard.jsx';
+import { TaskContext } from './../context/TaskContext.jsx';
 
 function TaskList() {
 
 	const { tasks } = useContext(TaskContext);
 
-	if (tasks.length === 0) {
-		
-		return <h2 className="text-white text-2xl font-bold text-center mt-4">No hay tareas aún.</h2>
-	}
-
 	return(
 
-		<section className="grid grid-cols-3 gap-4 mt-4"> { tasks.map(task => (
+		<section className="w-100 flex items-center justify-center my-5 flex-wrap gap-4">
+			{ 
+				(tasks.length === 0)
+					? <h2 className="text-white text-2xl font-bold text-center mt-4">No hay tareas</h2> 
+					: tasks.map((task) => <TaskCard key={task.id} task={task}/>)
+			} 
+		</section>
 
-			<TaskCard key={task.id} task={task}/>
-
-		))} </section>
 	);
-}
+};
 
 export default TaskList;
